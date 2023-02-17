@@ -219,8 +219,8 @@
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <writtenBy rdf:resource="#Chris"/>
   <performedBy rdf:resource="#Banger Boys"/>
-  <hasGenre rdf:resource="#experimentalRock"/>
   <hasGenre rdf:resource="#reggeaton"/>
+  <hasGenre rdf:resource="#experimentalRock"/>
 </Song>
 
 <Album rdf:about="#Bootleg Billionaire">
