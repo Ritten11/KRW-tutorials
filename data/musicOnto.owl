@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://test.org/music.owl"
+         xmlns="http://test.org/music.owl#">
+
+<owl:Ontology rdf:about="http://test.org/music.owl"/>
+
+<owl:ObjectProperty rdf:about="#hasSong">
+  <rdfs:domain rdf:resource="#Album"/>
+  <rdfs:range rdf:resource="#Song"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#writtenBy">
+  <rdfs:domain rdf:resource="#Song"/>
+  <rdfs:range rdf:resource="#Artist"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performedBy">
+  <rdfs:domain rdf:resource="#Song"/>
+  <rdfs:range rdf:resource="#Artist"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#bandMember">
+  <rdfs:domain rdf:resource="#Artist"/>
+  <rdfs:range rdf:resource="#Artist"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasSubGenre">
+  <rdfs:domain rdf:resource="#Genre"/>
+  <rdfs:range rdf:resource="#SubGenre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasGenre">
+  <rdfs:domain rdf:resource="#Song"/>
+  <rdfs:range rdf:resource="#Genre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasType">
+  <rdfs:domain rdf:resource="#Artist"/>
+  <rdfs:range rdf:resource="#ArtistType"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#releasDate">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Song"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#name">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#Popularity">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Person">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#name"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Song">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#writtenBy"/>
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#performedBy"/>
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#releasDate"/>
+      <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasGenre"/>
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#name"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Album">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#name"/>
+      <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSong"/>
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Artist">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasType"/>
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#Billboard">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageUrl">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Genre">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SubGenre">
+  <rdfs:subClassOf rdf:resource="#Genre"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ArtistType">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SoloArtist">
+  <rdfs:subClassOf rdf:resource="#Artist"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Artist"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#bandMember"/>
+          <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Band">
+  <rdfs:subClassOf rdf:resource="#Artist"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Artist"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#bandMember"/>
+          <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<Person rdf:about="#Alice">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Artist"/>
+</Person>
+
+<Person rdf:about="#Bob">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Artist"/>
+</Person>
+
+<Person rdf:about="#Chris">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdf:type rdf:resource="#Artist"/>
+</Person>
+
+<Artist rdf:about="#Banger Boys">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <bandMember rdf:resource="#Alice"/>
+  <bandMember rdf:resource="#Bob"/>
+  <bandMember rdf:resource="#Chris"/>
+</Artist>
+
+<Song rdf:about="#My heart goes BOOM">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <writtenBy rdf:resource="#Bob"/>
+  <performedBy rdf:resource="#Banger Boys"/>
+  <hasGenre rdf:resource="#triphop"/>
+</Song>
+
+<Song rdf:about="#My head goes WHOAHH">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <writtenBy rdf:resource="#Alice"/>
+  <performedBy rdf:resource="#Banger Boys"/>
+  <hasGenre rdf:resource="#experimentalRock"/>
+</Song>
+
+<Song rdf:about="#My feet go WILD">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <writtenBy rdf:resource="#Chris"/>
+  <performedBy rdf:resource="#Banger Boys"/>
+  <hasGenre rdf:resource="#experimentalRock"/>
+  <hasGenre rdf:resource="#reggeaton"/>
+</Song>
+
+<Album rdf:about="#Bootleg Billionaire">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasSong rdf:resource="#My heart goes BOOM"/>
+  <hasSong rdf:resource="#My head goes WHOAHH"/>
+  <hasSong rdf:resource="#My feet go WILD"/>
+</Album>
+
+<Genre rdf:about="#pop">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Genre>
+
+<Genre rdf:about="#rock">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasSubGenre rdf:resource="#experimentalRock"/>
+</Genre>
+
+<Genre rdf:about="#triphop">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Genre>
+
+<SubGenre rdf:about="#experimentalRock">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</SubGenre>
+
+<Genre rdf:about="#latin">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasSubGenre rdf:resource="#reggeaton"/>
+  <hasSubGenre rdf:resource="#salsa"/>
+</Genre>
+
+<SubGenre rdf:about="#salsa">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</SubGenre>
+
+<SubGenre rdf:about="#reggeaton">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</SubGenre>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#pop"/>
+    <rdf:Description rdf:about="#rock"/>
+    <rdf:Description rdf:about="#triphop"/>
+    <rdf:Description rdf:about="#latin"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+
+</rdf:RDF>

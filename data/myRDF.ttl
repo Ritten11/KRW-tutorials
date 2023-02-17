@@ -1,0 +1,18 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix teach: <http://krw.vu.nl/data#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/people/Bob> a teach:Student,
+        foaf:Person ;
+    foaf:age 24 ;
+    foaf:knows <http://example.org/people/Linda> ;
+    foaf:name "Bob" .
+
+<http://example.org/people/Linda> a teach:Teacher,
+        foaf:Person ;
+    teach:teacherOf [ a teach:Course ;
+            teach:hasDescription "Weekly fun stuff" ;
+            teach:hasTitle "Knowledge Representation on the Web" ] ;
+    foaf:age 40 ;
+    foaf:name "Linda" .
+
