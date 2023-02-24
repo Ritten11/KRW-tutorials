@@ -247,8 +247,8 @@
 
 <Genre rdf:about="#latin">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-  <hasSubGenre rdf:resource="#salsa"/>
   <hasSubGenre rdf:resource="#reggeaton"/>
+  <hasSubGenre rdf:resource="#salsa"/>
 </Genre>
 
 <SubGenre rdf:about="#salsa">
@@ -258,6 +258,10 @@
 <SubGenre rdf:about="#reggeaton">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
 </SubGenre>
+
+<Album rdf:about="#triple trillionaires">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Album>
 
 <owl:AllDifferent>
   <owl:distinctMembers rdf:parseType="Collection">
